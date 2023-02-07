@@ -1,6 +1,6 @@
 ---
 # User change
-title: "Deploy lambda function on ARM64 using Python"
+title: "Deploy Lambda function on AArch64 (ARM64) using Python"
 
 weight: 3 # 1 is first, 2 is second, etc.
 
@@ -8,7 +8,7 @@ weight: 3 # 1 is first, 2 is second, etc.
 layout: "learningpathall"
 ---
 
-##  Deploy lambda function on ARM64 using Python 
+##  Deploy Lambda function on AArch64 (ARM64) using Python 
 
 ## Prerequisites
 
@@ -16,10 +16,10 @@ layout: "learningpathall"
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 * [Terraform](https://github.com/zachlas/arm-software-developers-ads/blob/main/content/install-tools/terraform.md)
 
-## Deploy lambda function via Terraform
+## Deploy Lambda function via Terraform
 
-To generate an access key and secret key, follow the instructions mentioned in this [document](https://github.com/Avinashpuresoftware/arm-software-developers-ads/blob/main/content/learning-paths/server-and-cloud/Lambda_function/nodejs_deployment.md).
-To deploy AWS lambda function, we need `main.tf`,`output.tf` and `lambda function`(python_lambda.py) files.
+To generate an access key and secret key, follow the instructions mentioned in this [document](https://github.com/Avinashpuresoftware/arm-software-developers-ads/blob/main/content/learning-paths/server-and-cloud/lambda_function/nodejs_deployment.md).
+To deploy AWS Lambda function, we need `main.tf`,`output.tf` and `lambda_function`(python_lambda.py) files.
 
 ### Here is the python_lambda.py
 
@@ -33,7 +33,7 @@ def lambda_handler(event, context):
     }
 
 ```
-The above lambda function will simply prints `event.name` value as an ouput.
+The above Lambda function will simply prints `event.name` value as an ouput.
 
 
  
@@ -101,8 +101,8 @@ output "result" {
 ```
 **NOTE:-** Replace `access_key` and `secret_key` with your values.
 
-In the `main.tf` file mentioned above, a lambda function is being created. Additionally, we are establishing a lambda function-specific **IAM** role. Lambda function uses the **ZIP** file of code for uploading, so we are using resource `Archive` for this purpose.
-We are using `lambda invoke` resource in our `main.tf` file for invoking our lambda function.
+In the `main.tf` file mentioned above, a Lambda function is being created. Additionally, we are establishing a Lambda function-specific **IAM** role. Lambda function uses the **ZIP** file of code for uploading, so we are using resource `Archive` for this purpose.
+We are using `lambda invoke` resource in our `main.tf` file for invoking our Lambda function.
 
 
 ### Here is the output.tf file
@@ -113,7 +113,7 @@ output "lambda" {
 }
 
 ```
-We are printing the **ARN** (Amazon Resource Names) of the lambda resource in the above `output.tf` file. 
+We are printing the **ARN** (Amazon Resource Names) of the Lambda resource in the above `output.tf` file. 
 
 
 Now, use below Terraform commands to deploy `main.tf` file.
@@ -152,11 +152,14 @@ terraform apply
 ![Screenshot (351)](https://user-images.githubusercontent.com/92315883/216279981-a46e3cd0-50a0-4c93-b9e5-2c77ea84f865.png)
 
 
-### Verify the lambda function
+### Verify the Lambda function
 
-To verfiy the deployment of lambda function on AWS console. Go to **Lambda » Functions**. We will see our lambda function as below:
+To verfiy the deployment of Lambda function on AWS console. Go to **Lambda » Functions**. We will see our Lambda function as below:
 
 ![Screenshot (354)](https://user-images.githubusercontent.com/92315883/216284315-dec9b16c-bc34-4752-8408-e5af819ea030.png)
 
 
 ![Screenshot (357)](https://user-images.githubusercontent.com/92315883/216515003-78546861-9d21-4d79-995c-0c2b5073feec.png)
+
+
+**NOTE:**- To execute Lambda function on Graviton processor, we set " architectures = ["arm64"]".

@@ -21,15 +21,15 @@ layout: "learningpathall"
 
 The installation of Terraform on your desktop or laptop needs to communicate with AWS. Thus, Terraform needs to be able to authenticate with AWS. For authentication, generate access keys (access key ID and secret access key). These access keys are used by Terraform for making programmatic calls to AWS via the AWS CLI.
   
-### Go to My Security Credentials
+Go to My Security Credentials
    
 ![image](https://user-images.githubusercontent.com/87687468/190137370-87b8ca2a-0b38-4732-80fc-3ea70c72e431.png)
 
-### On Your Security Credentials page click on create access keys (access key ID and secret access key)
+On Your Security Credentials page click on create access keys (access key ID and secret access key)
    
 ![image](https://user-images.githubusercontent.com/87687468/190137925-c725359a-cdab-468f-8195-8cce9c1be0ae.png)
    
-### Copy the Access Key ID and Secret Access Key 
+Copy the Access Key ID and Secret Access Key 
 
 ![image](https://user-images.githubusercontent.com/87687468/190138349-7cc0007c-def1-48b7-ad1e-4ee5b97f4b90.png)
 

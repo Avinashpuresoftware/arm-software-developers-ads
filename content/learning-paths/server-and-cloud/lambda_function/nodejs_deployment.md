@@ -39,8 +39,7 @@ AWS Lambda is a compute service that lets you run code without provisioning or m
 Lambda runs your code on a high-availability compute infrastructure and performs all of the administration of the compute resources, including server and operating system maintenance, capacity provisioning and automatic scaling, and logging.
 To deploy AWS Lambda function, we need `main.tf`,`output.tf` and `lambda_function`(index.js) files.
 
-### Here is the index.js
-
+Here is the index.js
 
 ```console
 
@@ -54,8 +53,7 @@ exports.handler = function (event, context) {
 The above Lambda function will simply prints `event.name` value as an ouput.
 
 
- 
-### Here is the complete main.tf file
+Here is the complete main.tf file
 
 ```console
 provider "aws" {
@@ -122,7 +120,7 @@ output "result" {
  In the main.tf file mentioned above, a Lambda function is being created. Additionally, we are establishing a Lambda function-specific IAM role. Lambda function uses the **ZIP** file of code for uploading, so we are using resource `Archive` for this purpose. We are using `lambda invoke` resource in our `main.tf` file for invoking our Lambda function.
 
 
-### Here is the output.tf file
+Here is the output.tf file
 
 ```console
 output "lambda" {

@@ -21,8 +21,7 @@ layout: "learningpathall"
 To generate an access key and secret key, follow the instructions mentioned in this [document](https://github.com/Avinashpuresoftware/arm-software-developers-ads/blob/main/content/learning-paths/server-and-cloud/lambda_function/nodejs_deployment.md).
 To deploy AWS Lambda function, we need `main.tf`,`output.tf` and `lambda_function`(python_lambda.py) files.
 
-### Here is the python_lambda.py
-
+Here is the python_lambda.py
 
 ```console
 
@@ -36,8 +35,7 @@ def lambda_handler(event, context):
 The above Lambda function will simply prints `event.name` value as an ouput.
 
 
- 
-### Here is the complete main.tf file
+Here is the complete main.tf file
 
 ```console
 provider "aws" {
@@ -105,7 +103,7 @@ In the `main.tf` file mentioned above, a Lambda function is being created. Addit
 We are using `lambda invoke` resource in our `main.tf` file for invoking our Lambda function.
 
 
-### Here is the output.tf file
+Here is the output.tf file
 
 ```console
 output "lambda" {

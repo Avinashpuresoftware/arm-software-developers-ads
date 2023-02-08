@@ -21,7 +21,7 @@ layout: "learningpathall"
 To generate an **access key** and **secret key**, follow the instructions mentioned in this [document](https://github.com/Avinashpuresoftware/arm-software-developers-ads/blob/main/content/learning-paths/server-and-cloud/lambda_function/nodejs_deployment.md).
 To deploy AWS Lambda function, we need `main.tf`,`output.tf` and `lambda_function`(python_lambda.py) files.
 
-Here is the `python_lambda.py`
+Here is the `python_lambda.py` file
 
 ```console
 

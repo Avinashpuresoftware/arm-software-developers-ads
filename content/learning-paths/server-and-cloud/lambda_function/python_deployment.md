@@ -101,7 +101,6 @@ output "result" {
 In the **main.tf** file mentioned above, a Lambda function is being created. Additionally, we are establishing a Lambda function-specific IAM role. Lambda function uses the **ZIP** file of code for uploading, so we are using resource `Archive` for this purpose.
 We are using `lambda invoke` resource in our **main.tf** file for invoking our Lambda function.
 
-
 Here is the **output.tf** file
 
 ```console
@@ -117,7 +116,7 @@ Now, use below Terraform commands to deploy **main.tf** file.
 
 ### Terraform Commands
 
-#### Initialize Terraform
+**Initialize Terraform**
 
 Run `terraform init` to initialize the Terraform deployment. This command is responsible for downloading all dependencies which are required for the AWS provider.
 
@@ -127,7 +126,7 @@ terraform init
     
 ![Screenshot (255)](https://user-images.githubusercontent.com/92315883/209255228-8c8b1b17-ce55-4c7d-9916-6c15918fc82e.png)
 
-#### Create a Terraform execution plan
+**Create a Terraform execution plan**
 
 Run `terraform plan` to create an execution plan.
 
@@ -137,7 +136,7 @@ terraform plan
 
 **NOTE:** The **terraform plan** command is optional. You can directly run **terraform apply** command. But it is always better to check the resources about to be created.
 
-#### Apply a Terraform execution plan
+**Apply a Terraform execution plan**
 
 Run `terraform apply` to apply the execution plan to your cloud infrastructure. The below command creates all required infrastructure.
 
@@ -153,6 +152,5 @@ To verfiy the deployment of Lambda function on AWS console. Go to **Lambda » Fu
 ![Screenshot (354)](https://user-images.githubusercontent.com/92315883/216284315-dec9b16c-bc34-4752-8408-e5af819ea030.png)
 
 ![Screenshot (357)](https://user-images.githubusercontent.com/92315883/216515003-78546861-9d21-4d79-995c-0c2b5073feec.png)
-
 
 **NOTE:**- To execute Lambda function on Graviton processor, we set "architectures = ["arm64"]".

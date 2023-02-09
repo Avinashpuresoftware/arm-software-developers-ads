@@ -34,7 +34,6 @@ def lambda_handler(event, context):
 ```
 The above Lambda function will simply prints `event.name` value as an ouput.
 
-
 Here is the complete **main.tf** file
 
 ```console
@@ -128,7 +127,6 @@ terraform init
     
 ![Screenshot (255)](https://user-images.githubusercontent.com/92315883/209255228-8c8b1b17-ce55-4c7d-9916-6c15918fc82e.png)
 
-
 #### Create a Terraform execution plan
 
 Run `terraform plan` to create an execution plan.
@@ -147,7 +145,6 @@ Run `terraform apply` to apply the execution plan to your cloud infrastructure. 
 terraform apply
 ```      
 ![Screenshot (351)](https://user-images.githubusercontent.com/92315883/216279981-a46e3cd0-50a0-4c93-b9e5-2c77ea84f865.png)
-
 
 ### Verify the Lambda function
 

@@ -23,7 +23,8 @@ The installation of Terraform on your desktop or laptop needs to communicate wit
   
 Go to **Security Credentials**
    
-![image](https://user-images.githubusercontent.com/87687468/190137370-87b8ca2a-0b38-4732-80fc-3ea70c72e431.png)
+![190137370-87b8ca2a-0b38-4732-80fc-3ea70c72e431](https://user-images.githubusercontent.com/92315883/217728054-4259add4-5c40-4b69-9329-4252037a5afd.png)
+
 
 On Your **Security Credentials** page, click on **Create access key** (access key ID and secret access key)
    
@@ -37,9 +38,9 @@ Copy the **Access key ID** and **Secret access Key**
 
 AWS Lambda is a compute service that lets you run code without provisioning or managing servers.
 Lambda runs your code on a high-availability compute infrastructure and performs all of the administration of the compute resources, including server and operating system maintenance, capacity provisioning and automatic scaling, and logging.
-To deploy AWS Lambda function, we need `main.tf`,`output.tf` and `lambda_function`(index.js) files.
+To deploy AWS Lambda function, we need **main.tf**, **output.tf** and **lambda_function (index.js)** files.
 
-Here is the `index.js` file
+Here is the **index.js** file
 
 ```console
 
@@ -53,7 +54,7 @@ exports.handler = function (event, context) {
 The above Lambda function will simply prints `event.name` value as an ouput.
 
 
-Here is the complete `main.tf` file
+Here is the complete **main.tf** file
 
 ```console
 provider "aws" {
@@ -117,10 +118,10 @@ output "result" {
 **NOTE:-** Replace `access_key` and `secret_key` with your values.
 
 
- In the main.tf file mentioned above, a Lambda function is being created. Additionally, we are establishing a Lambda function-specific IAM role. Lambda function uses the **ZIP** file of code for uploading, so we are using resource `Archive` for this purpose. We are using `lambda invoke` resource in our `main.tf` file for invoking our Lambda function.
+ In the **main.tf** file mentioned above, a Lambda function is being created. Additionally, we are establishing a Lambda function-specific IAM role. Lambda function uses the **ZIP** file of code for uploading, so we are using resource `Archive` for this purpose. We are using `lambda invoke` resource in our **main.tf** file for invoking our Lambda function.
 
 
-Here is the `output.tf` file
+Here is the **output.tf** file
 
 ```console
 output "lambda" {
@@ -128,9 +129,9 @@ output "lambda" {
 }
 
 ```
-We are printing the **ARN** (Amazon Resource Names) of the Lambda resource in the above `output.tf` file. 
+We are printing the **ARN** (Amazon Resource Names) of the Lambda resource in the above **output.tf** file. 
 
-Now, use below Terraform commands to deploy `main.tf` file.
+Now, use below Terraform commands to deploy **main.tf** file.
 
 
 ### Terraform Commands
@@ -177,4 +178,4 @@ To verfiy the deployment of Lambda function on AWS console. Go to **Lambda » Fu
 ![Screenshot (358)](https://user-images.githubusercontent.com/92315883/216524063-a3d36a0a-9b42-44c5-a5b6-a0c90a3725d3.png)
 
 
-**NOTE:**- To execute Lambda function on Graviton processor, we set " architectures = ["arm64"]".
+**NOTE:**- To execute Lambda function on Graviton processor, we set "architectures = ["arm64"]".

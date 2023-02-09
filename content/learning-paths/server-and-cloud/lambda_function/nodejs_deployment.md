@@ -174,8 +174,6 @@ To verfiy the deployment of Lambda function on AWS console. Go to **Lambda » Fu
 
 ![Screenshot (348)](https://user-images.githubusercontent.com/92315883/216253082-792bc564-dbb1-46ec-a3ba-e3220f31dd2d.jpg)
 
-
 ![Screenshot (358)](https://user-images.githubusercontent.com/92315883/216524063-a3d36a0a-9b42-44c5-a5b6-a0c90a3725d3.png)
-
 
 **NOTE:**- To execute Lambda function on Graviton processor, we set "architectures = ["arm64"]".

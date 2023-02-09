@@ -136,7 +136,7 @@ Now, use below Terraform commands to deploy **main.tf** file.
 
 ### Terraform Commands
 
-#### Initialize Terraform
+**Initialize Terraform**
 
 Run `terraform init` to initialize the Terraform deployment. This command is responsible for downloading all dependencies which are required for the AWS provider.
 
@@ -147,7 +147,7 @@ terraform init
 ![Screenshot (255)](https://user-images.githubusercontent.com/92315883/209255228-8c8b1b17-ce55-4c7d-9916-6c15918fc82e.png)
 
 
-#### Create a Terraform execution plan
+**Create a Terraform execution plan**
 
 Run `terraform plan` to create an execution plan.
 
@@ -157,7 +157,7 @@ terraform plan
 
 **NOTE:** The **terraform plan** command is optional. You can directly run **terraform apply** command. But it is always better to check the resources about to be created.
 
-#### Apply a Terraform execution plan
+**Apply a Terraform execution plan**
 
 Run `terraform apply` to apply the execution plan to your cloud infrastructure. The below command creates all required infrastructure.
 

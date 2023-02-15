@@ -18,7 +18,7 @@ layout: "learningpathall"
 
 ## Deploy Lambda function via Terraform
 
-To generate an **access key** and **secret key**, follow the instructions mentioned in this [document](https://github.com/Avinashpuresoftware/arm-software-developers-ads/blob/main/content/learning-paths/server-and-cloud/lambda_function/nodejs_deployment.md).
+To generate an **access key** and **secret key**, follow the instructions mentioned in this [document](/content/learning-paths/server-and-cloud/lambda_function/nodejs_deployment.md).
 To deploy AWS Lambda functions, we need the **main.tf**, **output.tf** and **lambda_function (python_lambda.py)** files.
 
 Here is the **python_lambda.py** file
@@ -32,7 +32,7 @@ def lambda_handler(event, context):
     }
 
 ```
-The above Lambda function will simply print `event.name` value as an ouput.
+The above Lambda function will simply print `event.name` value as an output.
 
 Here is the complete **main.tf** file
 
@@ -98,7 +98,7 @@ output "result" {
 ```
 **NOTE:-** Replace `access_key` and `secret_key` with your values.
 
-In the **main.tf** file mentioned above, a Lambda function is being created. Additionally, we are establishing a Lambda function-specific IAM role. Lambda functions uses the **ZIP** file of code for uploading, so we are using resource `Archive` for this purpose.
+In the **main.tf** file mentioned above, a Lambda function is being created. Additionally, we are creating a Lambda function specific IAM role. Lambda functions use the **ZIP** file of code for uploading, so we are using the resource `Archive` for this purpose.
 We are using `lambda invoke` resource in our **main.tf** file for invoking our Lambda function.
 
 Here is the **output.tf** file
@@ -109,9 +109,9 @@ output "lambda" {
 }
 
 ```
-We are printing the **ARN** (Amazon Resource Names) of the Lambda resource in the above **output.tf** file. 
+We are printing the **ARN** (Amazon Resource Names) of the Lambda resource in the above **output.tf** file.
 
-Now, use the Terraform commands below to deploy **main.tf** file
+Now, use the Terraform commands below to deploy **main.tf** file.
 
 
 ### Terraform Commands
@@ -147,10 +147,10 @@ terraform apply
 
 ### Verify the Lambda function
 
-To verfiy the deployment of Lambda functions on AWS console. Go to **Lambda » Functions**. We will see our Lambda function as below:
+To verify the deployment of Lambda functions on AWS console, go to **Lambda » Functions**. We will see our Lambda function as below:
 
 ![Screenshot (354)](https://user-images.githubusercontent.com/92315883/216284315-dec9b16c-bc34-4752-8408-e5af819ea030.png)
 
 ![Screenshot (357)](https://user-images.githubusercontent.com/92315883/216515003-78546861-9d21-4d79-995c-0c2b5073feec.png)
 
-**NOTE:**- To execute Lambda functions on Graviton processor, we set "architectures = ["arm64"]".
+**NOTE:**- To execute Lambda functions on the Graviton processor, we set "architectures = ["arm64"]".

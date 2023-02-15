@@ -18,8 +18,7 @@ layout: "learningpathall"
 
 RDS is a Relational database service provided by AWS. More information can be found [here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MariaDB.html). 
 To generate an access key and secret key, follow the instructions mentioned in this [document](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#generate-access-keys-access-key-id-and-secret-access-key).
-The complete **main.tf** file for MariaDB RDS instance deployment is provided below. 
-
+To deploy an RDS instance of MariaDB, we have to create a Terraform file called **main.tf**. Below is the complete **main.tf**.
 
 ```console
 
@@ -86,7 +85,7 @@ variable "secret_key"{
 
 To run Graviton (Arm) based DB instance, we need to select Amazon **M6g** and **R6g** as a [instance](https://aws.amazon.com/blogs/database/key-considerations-in-moving-to-graviton2-for-amazon-rds-and-amazon-aurora-databases/) type. Here, we select **db.m6g.large** as a `instance_class`. 
 
-Now, use the Terraform commands below to deploy **main.tf** file
+Now, use below Terraform commands to deploy **main.tf** file.
 
 
 ## Terraform commands
@@ -157,4 +156,4 @@ use {name_of_your_database};
 ```
 ![Screenshot (373)](https://user-images.githubusercontent.com/92315883/218339705-fef60d7b-cd76-406d-9fc2-4374cf1d5ee4.png)
 
-To create and access a table, follow this [document](/learning-paths/server-and-cloud/mysql/ec2_deployment#access-database-and-create-table).
+To create and access a table, follow this [document](/learning-paths/server-and-cloud/mariadb/ec2_deployment#access-database-and-create-table).

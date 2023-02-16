@@ -19,20 +19,20 @@ layout: "learningpathall"
 * [Terraform](/content/install-tools/terraform.md)
 
 
-## Generate Access keys (access key ID and secret access key)
+## Generate Access keys (Access key ID and Secret access key)
 
-The installation of Terraform on your desktop or laptop needs to communicate with AWS. Thus, Terraform needs to be able to authenticate with AWS. For authentication, generate access keys (access key ID and secret access key). These access keys are used by Terraform for making programmatic calls to AWS via the AWS CLI.
+The installation of Terraform on your desktop or laptop needs to communicate with AWS. Thus, Terraform needs to be able to authenticate with AWS. For authentication, generate access keys (Access key ID and Secret access key). These access keys are used by Terraform for making programmatic calls to AWS via the AWS CLI.
   
 Go to **Security Credentials**
    
 ![190137370-87b8ca2a-0b38-4732-80fc-3ea70c72e431](https://user-images.githubusercontent.com/92315883/217728054-4259add4-5c40-4b69-9329-4252037a5afd.png)
 
 
-On Your **Security Credentials** page, click on **Create access key** (access key ID and secret access key)
+On Your **Security Credentials** page, click on **Create access key** (Access key ID and Secret access key)
    
 ![image](https://user-images.githubusercontent.com/87687468/190137925-c725359a-cdab-468f-8195-8cce9c1be0ae.png)
    
-Copy the **Access key ID** and **Secret access Key**
+Copy the **Access key ID** and **Secret access key**
 
 ![image](https://user-images.githubusercontent.com/87687468/190138349-7cc0007c-def1-48b7-ad1e-4ee5b97f4b90.png)
 
@@ -41,7 +41,7 @@ Copy the **Access key ID** and **Secret access Key**
 
 ### Generate the public key and private key
 
-Before using Terraform, first generate the key-pair (public key, private key) using ssh-keygen. Then associate both public and private keys with AWS EC2 instances.
+Before using Terraform, first generate the key-pair (public key, private key) using `ssh-keygen`. Then associate both public and private keys with AWS EC2 instances.
 
 Generate the key-pair using the following command:
 
@@ -134,7 +134,7 @@ resource "aws_key_pair" "deployer" {
 ```
 **NOTE:-** Replace `public_key`, `access_key`, `secret_key`, and `key_name` with your values.
 
-Now, use below Terraform commands to deploy **main.tf** file
+Now, use the Terraform commands below to deploy **main.tf** file.
 
 
 ### Terraform Commands
@@ -172,7 +172,7 @@ terraform apply
 ## Configure MariaDB through Ansible
 Ansible is a software tool that provides simple but powerful automation for cross-platform computer support.
 
-To deploy MariaDB instace, we have to create a `.yml` file, which is also known as `Ansible-Playbook`. Below is the ansible-playbook called **mariadb_module.yml** which will do this for us.
+To deploy MariaDB instace, we have to create a `.yml` file, which is also known as `Ansible-Playbook`. Below is the ansible-playbook called **mariadb_module.yml** .
 
 
 ```console
@@ -196,22 +196,22 @@ To deploy MariaDB instace, we have to create a `.yml` file, which is also known 
         state: started
         enabled: yes
     - name: Change Root Password
-      shell: sudo mariadb -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Avinash1'"
+      shell: sudo mariadb -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{Your_mariadb_password}}'"
     - name: Create database user with password and all database privileges and 'WITH GRANT OPTION'
       mysql_user:
          login_user: root
-         login_password: Avinash1
+         login_password: {{Your_mariadb_password}}
          login_host: localhost
          name: Local_user
          host: '%'
-         password: Password1
+         password: {{Give_any_password}}
          priv: '*.*:ALL,GRANT'
          state: present
     - name: Create a new database with name 'arm_test'
       community.mysql.mysql_db:
         name: arm_test
         login_user: root
-        login_password: Avinash1
+        login_password: {{Your_mariadb_password}}
         login_host: localhost
         state: present
         login_unix_socket: /run/mysqld/mysqld.sock
@@ -220,7 +220,7 @@ To deploy MariaDB instace, we have to create a `.yml` file, which is also known 
       expect:
         command: mariadb-secure-installation
         responses:
-           'Enter current password for root': 'Avinash1'
+           'Enter current password for root': '{{Your_mariadb_password}}'
            'Set root password': 'n'
            'Remove anonymous users': 'y'
            'Disallow root login remotely': 'n'
@@ -275,7 +275,7 @@ apt install mariadb-client
 ```
 
 ```console
-mariadb -h {public_ip of instance where Mysql deployed} -P3306 -u {user of database} -p{password of database}
+mariadb -h {public_ip of instance where MariaDB deployed} -P3306 -u {user of database} -p{password of database}
 ```
 
 **NOTE:-** Replace `{public_ip of instance where MariaDB deployed}`, `{user_name of database}` and `{password of database}` with your values. In our case `user_name`= `Local_user`, which we have created through the `.yml` file. 

@@ -8,7 +8,7 @@ minutes_to_complete: 60
 who_is_this_for: Anyone that wants to deploy Lambda functions on the Graviton processor on AWS
 
 learning_objectives: 
-    - Deploy Lambda function on AArch64 (ARM64) through Nodejs and Python
+    - Deploy Lambda a function on AArch64 (ARM64) through Nodejs and Python
 
 prerequisites:
     - An Amazon Web Services (AWS) account

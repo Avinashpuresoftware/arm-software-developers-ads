@@ -83,6 +83,8 @@ We also need to map the container port to the host port, which is `3306` in our 
 ```
 **NOTE:**- Replace `docker_container.env` variables with your MariaDB user and password. Also. replace `{{dockerhub_uname}}` and `{{dockerhub_pass}}` with your dockerhub credentials.
 
+In the above **mariadb_module.yml** file, we are pre-populating our database with the [table_dot.sql](https://github.com/Avinashpuresoftware/arm-software-developers-ads/files/10755199/table_dot_sql.txt) script file.
+
 In our case, the inventory file will generate automatically after the `terraform apply` command.
 
 ### Ansible Commands

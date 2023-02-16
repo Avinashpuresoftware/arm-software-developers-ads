@@ -23,7 +23,7 @@ To deploy an RDS instance of MariaDB, we have to create a Terraform file called 
 ```console
 
 provider "aws" {
-  region = "us-east-1"
+  region = "us-east-2"
   access_key  = var.access_key # access through credential file.
   secret_key   = var.secret_key
 }
@@ -44,7 +44,7 @@ resource "aws_db_instance" "Testing_mariadb" {
   skip_final_snapshot  =  true
   username              = var.username
   password              = var.password
-  availability_zone     = "us-east-1a"
+  availability_zone     = "us-east-2a"
   publicly_accessible  = true
   deletion_protection   = false
 
@@ -133,7 +133,7 @@ To connect to the RDS instance, we need the `Endpoint` of the RDS instance. To f
 ![Screenshot (372)](https://user-images.githubusercontent.com/92315883/218339661-0ac51c95-8789-42bc-962c-0b43fc64fb5b.png)
 
 
-Now, we can connect to RDS using the above Endpoint. Use the `user` and `password` mentioned in the `credential.tf` file.
+Now, we can connect to RDS using the above `Endpoint`. Use the `user` and `password` mentioned in the `credential.tf` file.
 
 ```console
 mariadb -h {{Endpoint}} -u {{user}} -p {{password}}

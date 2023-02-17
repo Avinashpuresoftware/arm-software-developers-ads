@@ -275,7 +275,7 @@ apt install mariadb-client
 ```
 
 ```console
-mariadb -h {public_ip of instance where MariaDB deployed} -P3306 -u {user of database} -p{password of database}
+mariadb -h {public_ip of instance where MariaDB deployed} -P3306 -u {user_name of database} -p{password of database}
 ```
 
 **NOTE:-** Replace `{public_ip of instance where MariaDB deployed}`, `{user_name of database}` and `{password of database}` with your values. In our case `user_name`= `Local_user`, which we have created through the `.yml` file. 

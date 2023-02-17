@@ -17,7 +17,7 @@ layout: "learningpathall"
 ## Deploy MariaDB RDS instances
 
 RDS is a Relational database service provided by AWS. More information can be found [here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MariaDB.html). 
-To generate an access key and secret key, follow the instructions mentioned in this [document](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#generate-access-keys-access-key-id-and-secret-access-key).
+To generate an access key and secret key, follow the instructions mentioned in this [document](/content/learning-paths/server-and-cloud/mariadb/ec2_deployment.md#generate-access-keys-access-key-id-and-secret-access-key).
 To deploy an RDS instance of MariaDB, we have to create a Terraform file called **main.tf**. Below is the complete **main.tf**.
 
 ```console
@@ -60,7 +60,7 @@ output "end_point" {
 
 ```  
 
-We also need to create a **credentail.tf** file, for passing our secret keys and password. Below is the **credentail.tf** file
+We also need to create a **credential.tf** file, for passing our secret keys and password. Below is the **credential.tf** file
 
 ```console
 variable "username"{
@@ -85,7 +85,7 @@ variable "secret_key"{
 
 To run Graviton (Arm) based DB instance, we need to select Amazon **M6g** and **R6g** as a [instance](https://aws.amazon.com/blogs/database/key-considerations-in-moving-to-graviton2-for-amazon-rds-and-amazon-aurora-databases/) type. Here, we select **db.m6g.large** as a `instance_class`. 
 
-Now, use below Terraform commands to deploy **main.tf** file.
+Now, use the Terraform commands below to deploy **main.tf** file.
 
 
 ## Terraform commands
@@ -108,6 +108,7 @@ terraform plan
 ```
 
 **NOTE:** The **terraform plan** command is optional. You can directly run **terraform apply** command. But it is always better to check the resources about to be created.
+
 ### Apply a Terraform execution plan
 
 Run `terraform apply` to apply the execution plan to your cloud infrastructure. The below command creates all required infrastructure.
@@ -119,7 +120,7 @@ terraform apply
 ![Screenshot (371)](https://user-images.githubusercontent.com/92315883/218339620-80e3f741-d295-4693-a057-4b6cd1e762aa.png)
 
 
-To verify the setup on AWS console. Go to **RDS » Databases**, you should see the instance running.  
+To verify the setup on AWS console, go to **RDS » Databases**, you should see the instance running.  
 
 ![Screenshot (374)](https://user-images.githubusercontent.com/92315883/218340185-097c876e-2c3c-4630-adef-ac9b905c08ec.png)
 
@@ -128,12 +129,12 @@ To verify the setup on AWS console. Go to **RDS » Databases**, you should see t
 
 To access the RDS instance, we need to make sure that our instance is correctly associated with a security group and VPC. To access RDS outside the VPC, Follow this [document](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.Connect.html).
 
-To connect to the RDS instance, we need the `Endpoint` of the RDS instance. To find the Endpoint, Go to **RDS »Dashboard » {{YOUR_RDS_INSTANCE}}**.
+To connect to the RDS instance, we need the `Endpoint` of the RDS instance. To find the Endpoint, go to **RDS »Dashboard » {{YOUR_RDS_INSTANCE}}**.
 
 ![Screenshot (372)](https://user-images.githubusercontent.com/92315883/218339661-0ac51c95-8789-42bc-962c-0b43fc64fb5b.png)
 
 
-Now, we can connect to RDS using the above `Endpoint`. Use the `user` and `password` mentioned in the `credential.tf` file.
+Now, we can connect to RDS by using the above `Endpoint`. Use the `user` and `password` mentioned in the **credential.tf** file.
 
 ```console
 mariadb -h {{Endpoint}} -u {{user}} -p {{password}}

@@ -136,7 +136,6 @@ resource "aws_key_pair" "deployer" {
 
 Now, use the Terraform commands below to deploy **main.tf** file.
 
-
 ### Terraform Commands
 
 **Initialize Terraform**
@@ -172,7 +171,7 @@ terraform apply
 ## Configure MariaDB through Ansible
 Ansible is a software tool that provides simple but powerful automation for cross-platform computer support.
 
-To deploy MariaDB instace, we have to create a `.yml` file, which is also known as `Ansible-Playbook`. Below is the ansible-playbook called **mariadb_module.yml** .
+To deploy MariaDB instance, we have to create a `.yml` file, which is also known as `Ansible-Playbook`. Below is the ansible-playbook called **mariadb_module.yml** .
 
 
 ```console

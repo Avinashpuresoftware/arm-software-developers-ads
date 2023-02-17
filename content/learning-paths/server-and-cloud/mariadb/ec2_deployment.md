@@ -60,7 +60,7 @@ Output when a key pair is generated:
 
 ## Deploy EC2 instance via Terraform
 
-After generating the public and private keys, we have to create an EC2 instance. Then we will push our public key to the **authorized_keys** folder in `~/.ssh`. We will also create a security group that opens inbound ports `22`(ssh) and `3306`(MariaDB). Below is a Terraform file called `main.tf` which will do this for us.
+After generating the public and private keys, we have to create an EC2 instance. Then we will push our public key to the **authorized_keys** folder in `~/.ssh`. We will also create a security group that opens inbound ports `22`(ssh) and `3306`(MariaDB). Below is a Terraform file named **main.tf** that will do this for us.
    
 
 ```console
@@ -118,7 +118,7 @@ resource "aws_security_group" "Terraformsecurity" {
  }
 resource "local_file" "inventory" {
     depends_on=[aws_instance.Mariadb_TEST]
-    filename = "/home/ubuntu/ec2/inventory.txt"
+    filename = "/home/ubuntu/inventory.txt"
     content = <<EOF
 [all]
 ansible-target1 ansible_connection=ssh ansible_host=${aws_instance.Mariadb_TEST.public_ip} ansible_user=ubuntu

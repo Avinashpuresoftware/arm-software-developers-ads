@@ -16,14 +16,14 @@ layout: "learningpathall"
 * [Terraform](/install-tools/terraform.md)
 * [Ansible](https://www.cyberciti.biz/faq/how-to-install-and-configure-latest-version-of-ansible-on-ubuntu-linux/)
 
-Before Installing MariaDB using docker via Ansible [Generate Access Keys](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#generate-access-keys-access-key-id-and-secret-access-key), [Generate key-pair using ssh keygen](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#generate-key-pairpublic-key-private-key-using-ssh-keygen) and [Deploy EC2 instance via Terraform](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#deploy-ec2-instance-via-terraform).
+Before Installing MariaDB using docker via Ansible [Generate Access Keys](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#generate-access-keys-access-key-id-and-secret-access-key), [Generate key-pair using ssh keygen](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#generate-key-pairpublic-key-private-key-using-ssh-keygen) and [Deploy EC2 instance via Terraform](/content/learning-paths/server-and-cloud/mariadb/ec2_deployment.md#deploy-ec2-instance-via-terraform).
 
 ## Deploy MariaDB container using Ansible
 Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.
 
 To run Ansible, we have to create a **.yml** file, which is also known as `Ansible-Playbook`.
 In our **.yml** file, we use the `community.docker` collection to deploy the MariaDB container.
-We also need to map the container port to the host port, which is `3306` in our case. Below is a **.yml** file called **mariadb_module.yml** which will do this for us.
+We also need to map the container port to the host port, which is `3306` in our case. Below is a **.yml** file named **mariadb_module.yml** that will do this for us.
 
 ```console
 ---
@@ -65,7 +65,7 @@ We also need to map the container port to the host port, which is `3306` in our 
          - "/tmp:/tmp:rw"
         restart: true
         env:
-          MARIADB_ROOT_PASSWORD: Armtest123
+          MARIADB_ROOT_PASSWORD: {{your_mariadb_password}}
           MARIADB_USER: local_us
           MARIADB_PASSWORD: Armtest123
           MARIADB_DATABASE: arm_test
@@ -76,14 +76,14 @@ We also need to map the container port to the host port, which is `3306` in our 
     - name: Run a simple command to populate table
       community.docker.docker_container_exec:
        container: mariadb_test
-       command: mariadb -u root -pAvinash1 -e "source /tmp/table.sql;"
+       command: mariadb -u root -p{{your_mariadb_password}} -e "source /tmp/table.sql;"
        chdir: /root
       register: result
 
 ```
 **NOTE:**- Replace `docker_container.env` variables with your MariaDB user and password. Also. replace `{{dockerhub_uname}}` and `{{dockerhub_pass}}` with your dockerhub credentials.
 
-In the above **mariadb_module.yml** file, we are pre-populating our database with the [table_dot.sql](https://github.com/Avinashpuresoftware/arm-software-developers-ads/files/10755199/table_dot_sql.txt) script file.
+In the above **mariadb_module.yml** file, we are pre-populating our database with the [table.sql](https://github.com/Avinashpuresoftware/arm-software-developers-ads/files/10755199/table_dot_sql.txt) script file.
 
 In our case, the inventory file will generate automatically after the `terraform apply` command.
 
@@ -109,10 +109,36 @@ apt install mariadb-client
 ```
 
 ```console
-mariadb -h {public_ip of instance where MariaDB deployed} -P3306 -u {user of database} -p{password of database}
+mariadb -h {public_ip of instance where MariaDB deployed} -P3306 -u {user_name of database} -p{password of database}
 ```
 
 **NOTE:-** Replace `{public_ip of instance where MariaDB deployed}`, `{user_name of database}` and `{password of database}` with your values. In our case `user_name`= `local_us`, which we have created through the **mariadb_module.yml** file. 
 
 ![Screenshot (385)](https://user-images.githubusercontent.com/92315883/218345000-99d902bd-2e35-4e95-8be6-2236b342b470.png)
 
+
+### Access Database and Tables
+
+To access our database and tables, use below command:
+
+```console
+show databases;
+```
+
+```console
+use {{your_database}}
+```
+
+```console
+show tables;
+```
+![Screenshot (398)](https://user-images.githubusercontent.com/92315883/219525956-73468894-b90a-4bd7-b0b4-fa42a57876a0.png)
+
+To view the content of the table
+
+```console
+select * from {{your_table}};
+```
+![Screenshot (399)](https://user-images.githubusercontent.com/92315883/219525937-ecb2ad70-127d-4231-9ea8-b5a98c5f4d5b.png)
+
+To create a table, follow this [document](/content/learning-paths/server-and-cloud/mariadb/ec2_deployment.md#access-database-and-create-table).

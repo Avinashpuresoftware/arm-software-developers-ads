@@ -246,7 +246,7 @@ To deploy MariaDB instance, we have to create a `.yml` file, which is also known
 ```
 **NOTE:-** Replace `{{Your_mariadb_password}}` and `{{Give_any_password}}` with your password.
 
-In the above **mariadb_module.yml** file, we are creating a user with all grant privileges and setting the password for the `root` user.
+In the above **mariadb_module.yml** file, we are creating a user(`Local_user`) with all privileges granted and setting the password for the `root` user.
 We are also enabling remote login by changing the `bind address` to `0.0.0.0` in the `/mariadb.conf.d/50-server.cnf` file.
 
 In our case, the inventory file will generate automatically after the `terraform apply` command.

@@ -23,16 +23,16 @@ layout: "learningpathall"
 
 The installation of Terraform on your desktop or laptop needs to communicate with AWS. Thus, Terraform needs to be able to authenticate with AWS. For authentication, generate access keys (Access key ID and Secret access key). These access keys are used by Terraform for making programmatic calls to AWS via the AWS CLI.
   
-Go to **Security Credentials**
+Go to **Security Credentials**.
    
 ![190137370-87b8ca2a-0b38-4732-80fc-3ea70c72e431](https://user-images.githubusercontent.com/92315883/217728054-4259add4-5c40-4b69-9329-4252037a5afd.png)
 
 
-On Your **Security Credentials** page, click on **Create access key** (Access key ID and Secret access key)
+On Your **Security Credentials** page, click on **Create access key** (Access key ID and Secret access key).
    
 ![image](https://user-images.githubusercontent.com/87687468/190137925-c725359a-cdab-468f-8195-8cce9c1be0ae.png)
    
-Copy the **Access key ID** and **Secret access key**
+Copy the **Access key ID** and **Secret access key**.
 
 ![image](https://user-images.githubusercontent.com/87687468/190138349-7cc0007c-def1-48b7-ad1e-4ee5b97f4b90.png)
 
@@ -171,8 +171,7 @@ terraform apply
 ## Configure MariaDB through Ansible
 Ansible is a software tool that provides simple but powerful automation for cross-platform computer support.
 
-To deploy MariaDB instance, we have to create a `.yml` file, which is also known as `Ansible-Playbook`. Below is the ansible-playbook called **mariadb_module.yml** .
-
+To deploy MariaDB instance, we have to create a `.yml` file, which is also known as `Ansible-Playbook`. Below is the ansible-playbook named **mariadb_module.yml** .
 
 ```console
 ---
@@ -252,7 +251,7 @@ We are also enabling remote login by changing the `bind address` to `0.0.0.0` in
 In our case, the inventory file will generate automatically after the `terraform apply` command.
 
 ### Ansible Commands
-To run a Playbook, we need to use the `ansible-playbook` command.
+To run a Playbook, we need to use the following `ansible-playbook` command.
 ```console
 ansible-playbook {your_yml_file} -i {your_inventory_file} --key-file {path_to_private_key}
 ```

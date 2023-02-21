@@ -55,7 +55,7 @@ Output when a key pair is generated:
 
 ![Screenshot (375)](https://user-images.githubusercontent.com/92315883/218902903-73c534d5-16ec-41ba-8d36-7fc0bb39f668.png)
       
-**Note:** Use the public key mariadb_key.pub inside the Terraform file to provision/start the instance and private key mariadb_key to connect to the instance.
+**Note:** Use the public key **mariadb_key.pub** inside the Terraform file to provision/start the instance and private key mariadb_key to connect to the instance.
 
 
 ## Deploy EC2 instance via Terraform
@@ -266,7 +266,7 @@ Here is the output after the successful execution of the `ansible-playbook` comm
 
 ## Connect to Database using EC2 instance
 
-To connect to the database, we need the `public-ip` of the instance where MariaDB is deployed. We also need to use the MariaDB Client to interact with the MariaDB database.
+To connect to the database, we need the `public-ip` of the instance where MariaDB is deployed, which can be found in **inventory.txt** file. We also need to use the MariaDB Client to interact with the MariaDB database.
 
 ```console
 apt install mariadb-client

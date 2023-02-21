@@ -16,14 +16,14 @@ layout: "learningpathall"
 * [Terraform](/install-tools/terraform)
 * [Ansible](https://www.cyberciti.biz/faq/how-to-install-and-configure-latest-version-of-ansible-on-ubuntu-linux/)
 
-Before installing MariaDB using docker via Ansible [Generate Access Keys](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#generate-access-keys-access-key-id-and-secret-access-key), [Generate key-pair using ssh keygen](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#generate-key-pairpublic-key-private-key-using-ssh-keygen) and [Deploy EC2 instance via Terraform](/content/learning-paths/server-and-cloud/mariadb/ec2_deployment.md#deploy-ec2-instance-via-terraform).
+Before installing MariaDB using docker via Ansible, [Generate Access Keys](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#generate-access-keys-access-key-id-and-secret-access-key), [Generate key-pair using ssh keygen](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#generate-key-pairpublic-key-private-key-using-ssh-keygen) and [Deploy EC2 instance via Terraform](/content/learning-paths/server-and-cloud/mariadb/ec2_deployment.md#deploy-ec2-instance-via-terraform).
 
 ## Deploy MariaDB container using Ansible
 Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.
 
 To run Ansible, we have to create a **.yml** file, which is also known as `Ansible-Playbook`.
 In our **.yml** file, we use the `community.docker` collection to deploy the MariaDB container.
-We also need to map the container port to the host port, which is `3306` in our case. Below is a **.yml** file named **mariadb_module.yml** that will do this for us.
+We also need to map the container port to the host port, which is `3306`. Below is a **.yml** file named **mariadb_module.yml** that will do this for us.
 
 ```console
 ---
@@ -102,7 +102,7 @@ Here is the output after the successful execution of the `ansible-playbook` comm
 
 ## Connect to Database using EC2 instance
 
-To connect to the database, we need the `public-ip` of the instance where MariaDB is deployed. We also need to use the MariaDB Client to interact with the MariaDB database.
+To connect to the database, we need the `public-ip` of the instance where MariaDB is deployed, which can be found in **inventory.txt** file. We also need to use the MariaDB Client to interact with the MariaDB database.
 
 ```console
 apt install mariadb-client

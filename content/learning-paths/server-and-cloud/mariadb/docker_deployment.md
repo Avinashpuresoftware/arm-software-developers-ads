@@ -13,7 +13,7 @@ layout: "learningpathall"
 
 * An [AWS account](https://portal.aws.amazon.com/billing/signup?nc2=h_ct&src=default&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start)
 * [Docker](https://www.simplilearn.com/tutorials/docker-tutorial/how-to-install-docker-on-ubuntu)
-* [Terraform](/install-tools/terraform.md)
+* [Terraform](/install-tools/terraform)
 * [Ansible](https://www.cyberciti.biz/faq/how-to-install-and-configure-latest-version-of-ansible-on-ubuntu-linux/)
 
 Before installing MariaDB using docker via Ansible [Generate Access Keys](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#generate-access-keys-access-key-id-and-secret-access-key), [Generate key-pair using ssh keygen](/content/learning-paths/server-and-cloud/mysql/ec2_deployment.md#generate-key-pairpublic-key-private-key-using-ssh-keygen) and [Deploy EC2 instance via Terraform](/content/learning-paths/server-and-cloud/mariadb/ec2_deployment.md#deploy-ec2-instance-via-terraform).

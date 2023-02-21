@@ -5,7 +5,7 @@ description: Deploy single instance of MariaDB through Docker, RDS and EC2 insta
 
 minutes_to_complete: 60   
 
-who_is_this_for: Anyone that wants to deploy MariaDB on AWS
+who_is_this_for: Anyone who wants to deploy MariaDB on AWS
 
 learning_objectives: 
     - Deploy single instance of MariaDB through Docker, RDS and EC2 instance

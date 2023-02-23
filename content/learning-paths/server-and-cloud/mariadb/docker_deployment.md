@@ -31,22 +31,19 @@ We also need to map the container port to the host port, which is `3306`. Below 
   remote_user: root
   become: true
   tasks:
-    - name: Update the Machine
-      shell: apt-get update -y
-    - name: Install docker
-      shell: apt install docker.io -y
-    - name: add user permissions
-      shell: usermod -aG docker ubuntu
+    - name: Update the Machine and Install dependencies
+      shell: |
+             apt-get update -y
+             apt-get -y install mariadb-client
+             apt-get install docker.io -y
+             usermod -aG docker ubuntu
+             apt-get -y install python3-pip
+             pip3 install PyMySQL
+             pip3 install docker
+      become: true
+
     - name: Reset ssh connection for changes to take effect
       meta: "reset_connection"
-    - name: Installing PIP for enabling MariaDB Modules
-      shell: apt -y install python3-pip
-    - name: Installing dependencies
-      shell: pip3 install PyMySQL
-    - name: Installing docker dependencies
-      shell: pip3 install docker
-    - name: Install Mariadb-client
-      shell: apt -y install mariadb-client
     - name: Log into DockerHub
       community.docker.docker_login:
         username: {{dockerhub_uname}}
@@ -94,11 +91,13 @@ ansible-playbook {your_yml_file} -i {your_inventory_file} --key-file {path_to_pr
 ```
 **NOTE:-** Replace `{your_yml_file}`, `{your_inventory_file}` and `{path_to_private_key}` with your values.
 
-![Screenshot (383)](https://user-images.githubusercontent.com/92315883/218344988-42b141b1-18c3-4567-a1fe-9fc2c8ae1329.png)
+![Screenshot (417)](https://user-images.githubusercontent.com/92315883/220873128-4da09207-258f-428b-9f27-604b542d5767.png)
+
 
 Here is the output after the successful execution of the `ansible-playbook` command.
 
-![Screenshot (382)](https://user-images.githubusercontent.com/92315883/218344992-46ab730e-d6b6-40bc-b917-45f57d7bff14.png)
+![Screenshot (418)](https://user-images.githubusercontent.com/92315883/220873176-5cc87b87-11c2-48d4-b46c-37ba3d46132f.png)
+
 
 ## Connect to Database using EC2 instance
 
@@ -114,7 +113,7 @@ mariadb -h {public_ip of instance where MariaDB deployed} -P3306 -u {user_name o
 
 **NOTE:-** Replace `{public_ip of instance where MariaDB deployed}`, `{user_name of database}` and `{password of database}` with your values. In our case, `user_name`= `local_us`, which we have created through the **mariadb_module.yml** file. 
 
-![Screenshot (385)](https://user-images.githubusercontent.com/92315883/218345000-99d902bd-2e35-4e95-8be6-2236b342b470.png)
+![Screenshot (420)](https://user-images.githubusercontent.com/92315883/220873547-bcad5a32-80f6-4a25-82b5-960642a4684b.png)
 
 
 ### Access Database and Tables

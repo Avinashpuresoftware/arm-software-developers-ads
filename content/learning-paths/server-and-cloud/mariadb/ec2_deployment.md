@@ -53,8 +53,8 @@ By default, the above command will generate the public as well as private key at
 
 Output when a key pair is generated:
 
-![Screenshot (375)](https://user-images.githubusercontent.com/92315883/218902903-73c534d5-16ec-41ba-8d36-7fc0bb39f668.png)
-      
+![Screenshot (412)](https://user-images.githubusercontent.com/92315883/220864727-f8461080-9eac-4f31-9256-68fd094d5733.png)
+
 **Note:** Use the public key **mariadb_key.pub** inside the Terraform file to provision/start the instance and private key **mariadb_key** to connect to the instance.
 
 
@@ -146,7 +146,7 @@ Run `terraform init` to initialize the Terraform deployment. This command is res
 terraform init
 ```
 
-![Screenshot (396)](https://user-images.githubusercontent.com/92315883/218903645-5d284f5d-8a09-4975-b662-82a514ef7bd1.png)
+![Screenshot (406)](https://user-images.githubusercontent.com/92315883/220863608-c4fcaccd-2842-4ad5-b560-8a458e227c7b.png)
 
 **Create a Terraform execution plan**
 
@@ -165,7 +165,8 @@ Run `terraform apply` to apply the execution plan to your cloud infrastructure. 
 ```console
 terraform apply
 ```      
-![Screenshot (395)](https://user-images.githubusercontent.com/92315883/218904200-364e0517-70fc-4a6b-927c-3bd49bc33349.png)
+
+![Screenshot (407)](https://user-images.githubusercontent.com/92315883/220863570-96aafa9f-d817-4c4c-adcc-86a62672f956.png)
 
 
 ## Configure MariaDB through Ansible
@@ -180,14 +181,14 @@ To deploy MariaDB instance, we have to create a `.yml` file, which is also known
   become: true
 
   tasks:
-    - name: Update the Machine
-      shell: apt-get update -y
-    - name: Installing Mariadb-Server
-      shell: apt-get -y install mariadb-server
-    - name: Installing PIP for enabling MariaDB Modules
-      shell: apt -y install python3-pip
-    - name: Installing Maridb dependencies
-      shell: pip3 install PyMySQL
+    - name: Update the Machine and Install dependencies
+      shell: |
+             apt-get update -y
+             apt-get -y install mariadb-server
+             apt -y install python3-pip
+             pip3 install PyMySQL
+      become: true
+
     - name: start and enable maridb service
       service:
         name: mariadb
@@ -257,11 +258,11 @@ ansible-playbook {your_yml_file} -i {your_inventory_file} --key-file {path_to_pr
 ```
 **NOTE:-** Replace `{your_yml_file}`, `{your_inventory_file}` and `{path_to_private_key}` with your values.
 
-![Screenshot (394)](https://user-images.githubusercontent.com/92315883/218904782-db7608b5-91ec-430d-9e30-8c5f39ce9eb6.png)
+![Screenshot (408)](https://user-images.githubusercontent.com/92315883/220863383-5e277651-2fda-49b3-b2e2-26e320d9f729.png)
 
 Here is the output after the successful execution of the `ansible-playbook` command.
 
-![Screenshot (393)](https://user-images.githubusercontent.com/92315883/218904797-03a4569c-d1b8-4c5e-be72-cd86e8703e01.png)
+![Screenshot (409)](https://user-images.githubusercontent.com/92315883/220863364-bd944936-a7dc-4dde-89dc-c478ffe7a385.png)
 
 
 ## Connect to Database using EC2 instance
@@ -278,7 +279,8 @@ mariadb -h {public_ip of instance where MariaDB deployed} -P3306 -u {user_name o
 
 **NOTE:-** Replace `{public_ip of instance where MariaDB deployed}`, `{user_name of database}` and `{password of database}` with your values. In our case `user_name`= `Local_user`, which we have created through the `.yml` file. 
 
-![Screenshot (389)](https://user-images.githubusercontent.com/92315883/218904841-5e2f8704-dbcf-4a5c-811d-d905a73b2e88.png)
+![Screenshot (410)](https://user-images.githubusercontent.com/92315883/220863315-06803b90-877d-4a26-a038-2667301fbfce.png)
+
 
 ### Access Database and Create Table
 

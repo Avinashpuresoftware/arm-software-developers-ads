@@ -129,17 +129,17 @@ To verify the setup on AWS console, go to **RDS » Databases**, you should see t
 
 To access the RDS instance, make sure that our instance is correctly associated with a security group and VPC. To access RDS outside the VPC, follow this [document](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.Connect.html).
 
-To connect to the RDS instance, we need the `Endpoint` of the RDS instance. To find the Endpoint, go to **RDS »Dashboard » {{YOUR_RDS_INSTANCE}}**.
+To connect to the RDS instance, we need the **Endpoint** of the RDS instance. To find the Endpoint, go to **RDS »Dashboard » {{YOUR_RDS_INSTANCE}}**.
 
 ![Screenshot (372)](https://user-images.githubusercontent.com/92315883/218339661-0ac51c95-8789-42bc-962c-0b43fc64fb5b.png)
 
 
-Now, we can connect to RDS by using the above `Endpoint`. Use the `user` and `password` mentioned in the **credential.tf** file.
+Now, we can connect to RDS by using the above **Endpoint**. Use the **user** and **password** mentioned in the **credential.tf** file.
 
 ```console
 mariadb -h {{Endpoint}} -u {{user}} -p {{password}}
 ```
-**NOTE:** Replace `{{Endpoint}}`, `{{user}}` and `{{password}}` with your values.
+**NOTE:** Replace **{{Endpoint}}**, **{{user}}** and **{{password}}** with your values.
 
 ![Screenshot (367)](https://user-images.githubusercontent.com/92315883/218339637-ecfb3c9f-d17f-43dc-a25f-27e5c330f750.png)
 

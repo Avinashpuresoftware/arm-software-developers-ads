@@ -132,7 +132,7 @@ resource "aws_key_pair" "deployer" {
 }
 
 ```
-**NOTE:-** Replace `public_key`, `access_key`, `secret_key`, and `key_name` with your values.
+**NOTE:-** Replace **public_key**, **access_key**, **secret_key**, and **key_name** with your values.
 
 Now, use the Terraform commands below to deploy **main.tf** file.
 
@@ -172,7 +172,7 @@ terraform apply
 ## Configure MariaDB through Ansible
 Ansible is a software tool that provides simple but powerful automation for cross-platform computer support.
 
-To deploy MariaDB instance, we have to create a `.yml` file, which is also known as `Ansible-Playbook`. Below is the ansible-playbook named **mariadb_module.yml** .
+To deploy MariaDB instance, we have to create a **.yml** file, which is also known as **Ansible-Playbook**. Below is the ansible-playbook named **mariadb_module.yml** .
 
 ```console
 ---
@@ -244,10 +244,10 @@ To deploy MariaDB instance, we have to create a `.yml` file, which is also known
 
 
 ```
-**NOTE:-** Replace `{{Your_mariadb_password}}` and `{{Give_any_password}}` with your password.
+**NOTE:-** Replace **{{Your_mariadb_password}}** and **{{Give_any_password}}** with your password.
 
-In the above **mariadb_module.yml** file, we are creating a user(`Local_user`) with all privileges granted and setting the password for the `root` user.
-We are also enabling remote login by changing the `bind address` to `0.0.0.0` in the `/mariadb.conf.d/50-server.cnf` file.
+In the above **mariadb_module.yml** file, we are creating a user(**Local_user**) with all privileges granted and setting the password for the **root** user.
+We are also enabling remote login by changing the **bind address** to **0.0.0.0** in the **/mariadb.conf.d/50-server.cnf** file.
 
 In our case, the inventory file will generate automatically after the `terraform apply` command.
 
@@ -256,7 +256,7 @@ To run a Playbook, we need to use the following `ansible-playbook` command.
 ```console
 ansible-playbook {your_yml_file} -i {your_inventory_file} --key-file {path_to_private_key}
 ```
-**NOTE:-** Replace `{your_yml_file}`, `{your_inventory_file}` and `{path_to_private_key}` with your values.
+**NOTE:-** Replace **{your_yml_file}**, **{your_inventory_file}** and **{path_to_private_key}** with your values.
 
 ![Screenshot (408)](https://user-images.githubusercontent.com/92315883/220863383-5e277651-2fda-49b3-b2e2-26e320d9f729.png)
 
@@ -267,7 +267,7 @@ Here is the output after the successful execution of the `ansible-playbook` comm
 
 ## Connect to Database using EC2 instance
 
-To connect to the database, we need the `public-ip` of the instance where MariaDB is deployed, which can be found in **inventory.txt** file. We also need to use the MariaDB Client to interact with the MariaDB database.
+To connect to the database, we need the **public-ip** of the instance where MariaDB is deployed, which can be found in **inventory.txt** file. We also need to use the MariaDB Client to interact with the MariaDB database.
 
 ```console
 apt install mariadb-client
@@ -277,7 +277,7 @@ apt install mariadb-client
 mariadb -h {public_ip of instance where MariaDB deployed} -P3306 -u {user_name of database} -p{password of database}
 ```
 
-**NOTE:-** Replace `{public_ip of instance where MariaDB deployed}`, `{user_name of database}` and `{password of database}` with your values. In our case `user_name`= `Local_user`, which we have created through the `.yml` file. 
+**NOTE:-** Replace **{public_ip of instance where MariaDB deployed}**, **{user_name of database}** and **{password of database}** with your values. In our case **user_name = Local_user**, which we have created through the **mariadb_module.yml** file. 
 
 ![Screenshot (410)](https://user-images.githubusercontent.com/92315883/220863315-06803b90-877d-4a26-a038-2667301fbfce.png)
 

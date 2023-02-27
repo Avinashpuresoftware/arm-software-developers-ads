@@ -55,8 +55,8 @@ resource "aws_db_instance" "Testing_mariadb" {
   tags = {
         name                 = "TEST MariaDB"
   }
-
 }
+
 output "end_point" {
  value = aws_db_instance.Testing_mariadb.endpoint
 }

@@ -22,7 +22,7 @@ Before installing MariaDB using docker via Ansible, [Generate Access Keys](/cont
 Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.
 
 To run Ansible, we have to create a **.yml** file, which is also known as `Ansible-Playbook`.
-In our **.yml** file, we use the `community.docker` collection to deploy the MariaDB container.
+In our **.yml** file, we use the **community.docker** collection to deploy the MariaDB container.
 We also need to map the container port to the host port, which is `3306`. Below is a **.yml** file named **mariadb_module.yml** that will do this for us.
 
 ```console
@@ -78,7 +78,7 @@ We also need to map the container port to the host port, which is `3306`. Below 
       register: result
 
 ```
-**NOTE:**- Replace `docker_container.env` variables of `Deploy mariadb docker container` task with your own MariaDB user and password. Also, replace `{{dockerhub_uname}}` and `{{dockerhub_pass}}` with your dockerhub credentials.
+**NOTE:**- Replace **docker_container.env** variables of **Deploy mariadb docker container** task with your own MariaDB user and password. Also, replace **{{dockerhub_uname}}** and **{{dockerhub_pass}}** with your dockerhub credentials.
 
 In the above **mariadb_module.yml** file, we are pre-populating our database with the [table.sql](https://github.com/Avinashpuresoftware/arm-software-developers-ads/files/10755199/table_dot_sql.txt) script file.
 
@@ -89,7 +89,7 @@ To run a Playbook, we need to use the following `ansible-playbook` command.
 ```console
 ansible-playbook {your_yml_file} -i {your_inventory_file} --key-file {path_to_private_key}
 ```
-**NOTE:-** Replace `{your_yml_file}`, `{your_inventory_file}` and `{path_to_private_key}` with your values.
+**NOTE:-** Replace **{your_yml_file}**, **{your_inventory_file}** and **{path_to_private_key}** with your values.
 
 ![Screenshot (417)](https://user-images.githubusercontent.com/92315883/220873128-4da09207-258f-428b-9f27-604b542d5767.png)
 
@@ -101,7 +101,7 @@ Here is the output after the successful execution of the `ansible-playbook` comm
 
 ## Connect to Database using EC2 instance
 
-To connect to the database, we need the `public-ip` of the instance where MariaDB is deployed, which can be found in **inventory.txt** file. We also need to use the MariaDB Client to interact with the MariaDB database.
+To connect to the database, we need the **public-ip** of the instance where MariaDB is deployed, which can be found in **inventory.txt** file. We also need to use the MariaDB Client to interact with the MariaDB database.
 
 ```console
 apt install mariadb-client
@@ -111,7 +111,7 @@ apt install mariadb-client
 mariadb -h {public_ip of instance where MariaDB deployed} -P3306 -u {user_name of database} -p{password of database}
 ```
 
-**NOTE:-** Replace `{public_ip of instance where MariaDB deployed}`, `{user_name of database}` and `{password of database}` with your values. In our case, `user_name`= `local_us`, which we have created through the **mariadb_module.yml** file. 
+**NOTE:-** Replace **{public_ip of instance where MariaDB deployed}**, **{user_name of database}** and **{password of database}** with your values. In our case, **user_name**= **local_us**, which we have created through the **mariadb_module.yml** file. 
 
 ![Screenshot (420)](https://user-images.githubusercontent.com/92315883/220873547-bcad5a32-80f6-4a25-82b5-960642a4684b.png)
 

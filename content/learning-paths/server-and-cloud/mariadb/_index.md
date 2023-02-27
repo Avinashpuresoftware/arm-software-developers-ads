@@ -5,7 +5,7 @@ description: Deploy single instance of MariaDB through Docker, RDS and EC2 insta
 
 minutes_to_complete: 60   
 
-who_is_this_for: Anyone who wants to deploy MariaDB on AWS
+who_is_this_for: This is an introductory topic for software developers who want to deploy an Arm based MariaDB EC2 instance, RDS and container on AWS.
 
 learning_objectives: 
     - Deploy single instance of MariaDB through Docker, RDS and EC2 instance
@@ -13,8 +13,7 @@ learning_objectives:
 
 prerequisites:
     - An Amazon Web Services (AWS) account
-    - Terraform
-    - Ansible
+    - A computer with the following tools installed`:` Terraform, Ansible 
 
 author_primary: Jason Andrews
 ### Tags

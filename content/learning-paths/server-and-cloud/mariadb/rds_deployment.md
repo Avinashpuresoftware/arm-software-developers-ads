@@ -85,39 +85,10 @@ variable "secret_key"{
 
 To run Graviton (Arm) based DB instance, we need to select Amazon **M6g** and **R6g** as a [instance type](https://aws.amazon.com/blogs/database/key-considerations-in-moving-to-graviton2-for-amazon-rds-and-amazon-aurora-databases/). Here, we select **db.m6g.large** as a **instance_class**. 
 
-Now, use the Terraform commands below to deploy **main.tf** file.
+Now, use the [Terraform commands](/learning-paths/server-and-cloud/aws/terraform#terraform-commands) to deploy **main.tf** file.
 
 
-## Terraform commands
-
-**Initialize Terraform**
-
-Run `terraform init` to initialize the Terraform deployment. This command is responsible for downloading all dependencies which are required for the AWS provider.
-
-```console
-terraform init
-```
-![Screenshot (369)](https://user-images.githubusercontent.com/92315883/218339605-a38f5ee1-d0f6-475d-b0c2-ac766837cc5a.png)
-
-**Create a Terraform execution plan**
-
-Run `terraform plan` to create an execution plan.
-
-```console
-terraform plan
-```
-
-**NOTE:** The **terraform plan** command is optional. You can directly run **terraform apply** command. But it is always better to check the resources about to be created.
-
-### Apply a Terraform execution plan
-
-Run `terraform apply` to apply the execution plan to your cloud infrastructure. The below command creates all required infrastructure.
-
-```console
-terraform apply
-```      
-
-![Screenshot (371)](https://user-images.githubusercontent.com/92315883/218339620-80e3f741-d295-4693-a057-4b6cd1e762aa.png)
+## Verify RDS using EC2 instance
 
 
 To verify the setup on AWS console, go to **RDS » Databases**, you should see the instance running.  

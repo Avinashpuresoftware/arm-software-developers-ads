@@ -35,6 +35,7 @@ provider "aws" {
   access_key  = "Axxxxxxxxxxxxxxxxxxxx"
   secret_key   = "Rxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 }
+
 resource "aws_instance" "Mariadb_TEST" {
   ami           = "ami-064593a301006939b"
   instance_type = "t4g.small"
@@ -50,6 +51,7 @@ resource "aws_default_vpc" "main" {
     Name = "main"
   }
 }
+
 resource "aws_security_group" "Terraformsecurity" {
   name        = "Terraformsecurity"
   description = "Allow TLS inbound traffic"
@@ -61,7 +63,7 @@ resource "aws_security_group" "Terraformsecurity" {
     to_port          = 3306
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
-}
+  }
   ingress {
     description      = "TLS from VPC"
     from_port        = 22
@@ -79,8 +81,8 @@ resource "aws_security_group" "Terraformsecurity" {
   tags = {
     Name = "Terraformsecurity"
   }
+}
 
- }
 resource "local_file" "inventory" {
     depends_on=[aws_instance.Mariadb_TEST]
     filename = "/home/ubuntu/inventory.txt"
@@ -93,7 +95,6 @@ ansible-target1 ansible_connection=ssh ansible_host=${aws_instance.Mariadb_TEST.
 resource "aws_key_pair" "deployer" {
         key_name   = "mariadb_key"
         public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQClK0s+DjdgSVcOhCy34VF605SuyJOQcv/ZASuXpxh7PqrANXZzGDxLaDkGS4ovxt5t78BDJcohe+SxiCaZCSKwHg0M75e6FTYaC2y0bKfD7FXGAWBJtC5mF927XdwfEDLxmxYtKDRWZT0SMQdGwxL50hnvzVoPmV8SafQAEvKTmF7qB+8ovpOQFbCQDZ8BFg3eNplYwJHcT8a3ErmBiAe6o2qjUDyoYaYGOM+xpbT8HQ/CbuV5qyEHWqAAc4bgtRrJc/waZt8+NqWYmzYc5swr8bg/ILKhxYz4Llm2Mx6HQUUKiCk8ywj26Yt5zBz/c9ErSXKlvxRt2afwJKrt0XWb ubuntu@ip-172-31-93-112"
-
 }
 
 ```

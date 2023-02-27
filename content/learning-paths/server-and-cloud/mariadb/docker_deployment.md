@@ -19,9 +19,8 @@ Three tools are required on the computer you are using. Follow the links to inst
 * [Terraform](/install-tools/terraform)
 * [Ansible](https://www.cyberciti.biz/faq/how-to-install-and-configure-latest-version-of-ansible-on-ubuntu-linux/)
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-* [Docker](https://www.simplilearn.com/tutorials/docker-tutorial/how-to-install-docker-on-ubuntu)
 
-Before installing MariaDB using docker via Ansible, [Generate Access Keys](/learning-paths/server-and-cloud/aws/terraform#generate-access-keys-access-key-id-and-secret-access-key), [Generate key-pair using ssh keygen](/learning-paths/server-and-cloud/aws/terraform#generate-key-pairpublic-key-private-key-using-ssh-keygen) and [Deploy EC2 instance via Terraform](/learning-paths/server-and-cloud/mariadb/ec2_deployment#deploy-ec2-instance-via-terraform).
+Before installing MariaDB docker container via Ansible, [Generate Access Keys](/learning-paths/server-and-cloud/aws/terraform#generate-access-keys-access-key-id-and-secret-access-key), [Generate key-pair using ssh keygen](/learning-paths/server-and-cloud/aws/terraform#generate-key-pairpublic-key-private-key-using-ssh-keygen) and [Deploy EC2 instance via Terraform](/learning-paths/server-and-cloud/mariadb/ec2_deployment#deploy-ec2-instance-via-terraform). After successful deployment of EC2 instance, we need to configure MariaDB docker container on the same.
 
 ## Deploy MariaDB container using Ansible
 Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.
@@ -138,11 +137,11 @@ show tables;
 ```
 ![Screenshot (398)](https://user-images.githubusercontent.com/92315883/219525956-73468894-b90a-4bd7-b0b4-fa42a57876a0.png)
 
-To view the content of the table
+To view the content of the table:
 
 ```console
 select * from {{your_table}};
 ```
 ![Screenshot (399)](https://user-images.githubusercontent.com/92315883/219525937-ecb2ad70-127d-4231-9ea8-b5a98c5f4d5b.png)
 
-To create a table, follow this [document](/content/learning-paths/server-and-cloud/mariadb/ec2_deployment.md#access-database-and-create-table).
+We are currently viewing the contents of the **table.sql** file. To create your own table, follow this [document](/learning-paths/server-and-cloud/mariadb/ec2_deployment#access-database-and-create-table).

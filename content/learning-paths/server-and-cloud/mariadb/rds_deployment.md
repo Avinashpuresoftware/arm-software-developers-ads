@@ -81,9 +81,9 @@ variable "secret_key"{
 
 
 ```
-**NOTE:** Replace `secret_key` and `access_key` with the your AWS credentials.
+**NOTE:** Replace **secret_key** and **access_key** with the your AWS credentials.
 
-To run Graviton (Arm) based DB instance, we need to select Amazon **M6g** and **R6g** as a [instance type](https://aws.amazon.com/blogs/database/key-considerations-in-moving-to-graviton2-for-amazon-rds-and-amazon-aurora-databases/). Here, we select **db.m6g.large** as a `instance_class`. 
+To run Graviton (Arm) based DB instance, we need to select Amazon **M6g** and **R6g** as a [instance type](https://aws.amazon.com/blogs/database/key-considerations-in-moving-to-graviton2-for-amazon-rds-and-amazon-aurora-databases/). Here, we select **db.m6g.large** as a **instance_class**. 
 
 Now, use the Terraform commands below to deploy **main.tf** file.
 

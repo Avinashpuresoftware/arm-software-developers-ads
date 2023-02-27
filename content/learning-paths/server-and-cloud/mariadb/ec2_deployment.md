@@ -18,45 +18,7 @@ layout: "learningpathall"
 * [Ansible](https://www.cyberciti.biz/faq/how-to-install-and-configure-latest-version-of-ansible-on-ubuntu-linux/)
 * [Terraform](/install-tools/terraform)
 
-
-## Generate Access keys (Access key ID and Secret access key)
-
-The installation of Terraform on your desktop or laptop needs to communicate with AWS. Thus, Terraform needs to be able to authenticate with AWS. For authentication, generate access keys (Access key ID and Secret access key). These access keys are used by Terraform for making programmatic calls to AWS via the AWS CLI.
-  
-Go to **Security Credentials**.
-   
-![190137370-87b8ca2a-0b38-4732-80fc-3ea70c72e431](https://user-images.githubusercontent.com/92315883/217728054-4259add4-5c40-4b69-9329-4252037a5afd.png)
-
-
-On Your **Security Credentials** page, click on **Create access key** (Access key ID and Secret access key).
-   
-![image](https://user-images.githubusercontent.com/87687468/190137925-c725359a-cdab-468f-8195-8cce9c1be0ae.png)
-   
-Copy the **Access key ID** and **Secret access key**.
-
-![image](https://user-images.githubusercontent.com/87687468/190138349-7cc0007c-def1-48b7-ad1e-4ee5b97f4b90.png)
-
-
-## Generate key-pair(public key, private key) using ssh keygen
-
-### Generate the public key and private key
-
-Before using Terraform, first generate the key-pair (public key, private key) using `ssh-keygen`. Then associate both public and private keys with AWS EC2 instances.
-
-Generate the key-pair using the following command:
-
-```console
-ssh-keygen -t rsa -b 2048
-```
-       
-By default, the above command will generate the public as well as private key at location **$HOME/.ssh**. You can override the end destination with a custom path.
-
-Output when a key pair is generated:
-
-![Screenshot (412)](https://user-images.githubusercontent.com/92315883/220864727-f8461080-9eac-4f31-9256-68fd094d5733.png)
-
-**Note:** Use the public key **mariadb_key.pub** inside the Terraform file to provision/start the instance and private key **mariadb_key** to connect to the instance.
-
+Before installing MariaDB using EC2 via Ansible, [Generate Access Keys](/learning-paths/server-and-cloud/aws/terraform#generate-access-keys-access-key-id-and-secret-access-key), [Generate key-pair using ssh keygen](/learning-paths/server-and-cloud/aws/terraform#generate-key-pairpublic-key-private-key-using-ssh-keygen).
 
 ## Deploy EC2 instance via Terraform
 
@@ -134,39 +96,7 @@ resource "aws_key_pair" "deployer" {
 ```
 **NOTE:-** Replace **public_key**, **access_key**, **secret_key**, and **key_name** with your values.
 
-Now, use the Terraform commands below to deploy **main.tf** file.
-
-### Terraform Commands
-
-**Initialize Terraform**
-
-Run `terraform init` to initialize the Terraform deployment. This command is responsible for downloading all dependencies which are required for the AWS provider.
-
-```console
-terraform init
-```
-
-![Screenshot (406)](https://user-images.githubusercontent.com/92315883/220863608-c4fcaccd-2842-4ad5-b560-8a458e227c7b.png)
-
-**Create a Terraform execution plan**
-
-Run `terraform plan` to create an execution plan.
-
-```console
-terraform plan
-```
-
-**NOTE:** The **terraform plan** command is optional. You can directly run **terraform apply** command. But it is always better to check the resources about to be created.
-
-**Apply a Terraform execution plan**
-
-Run `terraform apply` to apply the execution plan to your cloud infrastructure. The below command creates all required infrastructure.
-
-```console
-terraform apply
-```      
-
-![Screenshot (407)](https://user-images.githubusercontent.com/92315883/220863570-96aafa9f-d817-4c4c-adcc-86a62672f956.png)
+Now, use the [Terraform commands](/learning-paths/server-and-cloud/aws/terraform#terraform-commands) below to deploy **main.tf** file.
 
 
 ## Configure MariaDB through Ansible

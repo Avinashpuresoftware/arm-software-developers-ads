@@ -22,7 +22,7 @@ Three tools are required on the computer you are using. Follow the links to inst
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
 
-Before installing single instance of MariaDB via Ansible, [Generate Access Keys](/learning-paths/server-and-cloud/aws/terraform#generate-access-keys-access-key-id-and-secret-access-key), [Generate key-pair using ssh keygen](/learning-paths/server-and-cloud/aws/terraform#generate-key-pairpublic-key-private-key-using-ssh-keygen).
+Before installing EC2 instance of MariaDB via Ansible, [Generate Access Keys](/learning-paths/server-and-cloud/aws/terraform#generate-access-keys-access-key-id-and-secret-access-key), [Generate key-pair using ssh keygen](/learning-paths/server-and-cloud/aws/terraform#generate-key-pairpublic-key-private-key-using-ssh-keygen).
 
 ## Deploy EC2 instance via Terraform
 
@@ -43,7 +43,6 @@ resource "aws_instance" "Mariadb_TEST" {
   tags = {
     Name = "Mariadb_TEST"
   }
-
 }
 
 resource "aws_default_vpc" "main" {
@@ -100,7 +99,7 @@ resource "aws_key_pair" "deployer" {
 ```
 **NOTE:-** Replace **public_key**, **access_key**, **secret_key**, and **key_name** with your values.
 
-Now, use the [Terraform commands](/learning-paths/server-and-cloud/aws/terraform#terraform-commands) to deploy **main.tf** file.
+Now, use the [Terraform commands](/learning-paths/server-and-cloud/aws/terraform#terraform-commands) to deploy **main.tf** file. After successful deployment of EC2 instance we need to configure MariaDB on the same via Ansible
 
 
 ## Configure MariaDB through Ansible
@@ -113,7 +112,6 @@ To deploy MariaDB instance, we have to create a **.yml** file, which is also kno
 - hosts: all
   remote_user: root
   become: true
-
   tasks:
     - name: Update the Machine and Install dependencies
       shell: |
@@ -122,7 +120,6 @@ To deploy MariaDB instance, we have to create a **.yml** file, which is also kno
              apt -y install python3-pip
              pip3 install PyMySQL
       become: true
-
     - name: start and enable maridb service
       service:
         name: mariadb
@@ -176,11 +173,10 @@ To deploy MariaDB instance, we have to create a **.yml** file, which is also kno
         name: mariadb
         state: restarted
 
-
 ```
 **NOTE:-** Replace **{{Your_mariadb_password}}** and **{{Give_any_password}}** with your password.
 
-In the above **mariadb_module.yml** file, we are creating a user(**Local_user**) with all privileges granted and setting the password for the **root** user.
+In the above **mariadb_module.yml** file, we are creating a user (**Local_user**) with all privileges granted and setting the password for the **root** user.
 We are also enabling remote login by changing the **bind address** to **0.0.0.0** in the **/mariadb.conf.d/50-server.cnf** file.
 
 In our case, the inventory file will generate automatically after the `terraform apply` command.

@@ -96,7 +96,7 @@ resource "aws_key_pair" "deployer" {
 ```
 **NOTE:-** Replace **public_key**, **access_key**, **secret_key**, and **key_name** with your values.
 
-Now, use the [Terraform commands](/learning-paths/server-and-cloud/aws/terraform#terraform-commands) below to deploy **main.tf** file.
+Now, use the [Terraform commands](/learning-paths/server-and-cloud/aws/terraform#terraform-commands) to deploy **main.tf** file.
 
 
 ## Configure MariaDB through Ansible

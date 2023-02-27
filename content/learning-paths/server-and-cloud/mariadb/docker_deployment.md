@@ -45,7 +45,6 @@ We also need to map the container port to the host port, which is `3306`. Below 
              pip3 install PyMySQL
              pip3 install docker
       become: true
-
     - name: Reset ssh connection for changes to take effect
       meta: "reset_connection"
     - name: Log into DockerHub
@@ -144,4 +143,4 @@ select * from {{your_table}};
 ```
 ![Screenshot (399)](https://user-images.githubusercontent.com/92315883/219525937-ecb2ad70-127d-4231-9ea8-b5a98c5f4d5b.png)
 
-We are currently viewing the contents of the **table.sql** file. To create your own table, follow this [document](/learning-paths/server-and-cloud/mariadb/ec2_deployment#access-database-and-create-table).
+Above table has been created by **table.sql** file through Ansible-playbook. To create your own table, follow this [document](/learning-paths/server-and-cloud/mariadb/ec2_deployment#access-database-and-create-table).

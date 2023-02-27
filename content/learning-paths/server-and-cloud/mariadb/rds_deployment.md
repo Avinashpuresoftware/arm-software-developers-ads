@@ -132,4 +132,4 @@ use {name_of_your_database};
 ```
 ![Screenshot (373)](https://user-images.githubusercontent.com/92315883/218339705-fef60d7b-cd76-406d-9fc2-4374cf1d5ee4.png)
 
-To create and access a table, follow this [document](/content/learning-paths/server-and-cloud/mariadb/ec2_deployment.md#access-database-and-create-table).
+To create and access a table, follow this [document](/learning-paths/server-and-cloud/mariadb/ec2_deployment#access-database-and-create-table).

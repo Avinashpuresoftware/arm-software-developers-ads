@@ -14,7 +14,7 @@ layout: "learningpathall"
 
 Any computer which has the required tools installed can be used for this section. 
 
-You will need an [AWS account](https://portal.aws.amazon.com/billing/signup?nc2=h_ct&src=default&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start). Create an account if needed. 
+You will need an [AWS account](https://portal.aws.amazon.com/billing/signup?nc2=h_ct&src=default&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start). 
 
 Three tools are required on the computer you are using. Follow the links to install the required tools.
 * [Terraform](/install-tools/terraform)

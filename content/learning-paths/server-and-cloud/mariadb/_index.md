@@ -8,7 +8,7 @@ minutes_to_complete: 60
 who_is_this_for: This is an introductory topic for anyone who wants to deploy MariaDB on Arm based EC2 instance, Arm based RDS deployment, or Arm based container on AWS.
 
 learning_objectives: 
-    - Deploy single instance of MariaDB through Docker, RDS and EC2 instance
+    - Deploy a single instance of MariaDB through Docker, RDS, or an EC2 instance.
     - Automate MariaDB EC2 instance creation using Terraform and Ansible
 
 prerequisites:

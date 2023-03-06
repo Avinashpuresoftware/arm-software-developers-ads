@@ -22,7 +22,7 @@ Three tools are required on the computer you are using. Follow the links to inst
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
 
-Before installing EC2 instance of MariaDB via Ansible, [Generate Access Keys](/learning-paths/server-and-cloud/aws/terraform#generate-access-keys-access-key-id-and-secret-access-key), [Generate key-pair using ssh keygen](/learning-paths/server-and-cloud/aws/terraform#generate-key-pairpublic-key-private-key-using-ssh-keygen).
+Before installing MariaDB on an EC2 instance via Ansible, [Generate Access Keys](/learning-paths/server-and-cloud/aws/terraform#generate-access-keys-access-key-id-and-secret-access-key), [Generate key-pair using ssh keygen](/learning-paths/server-and-cloud/aws/terraform#generate-key-pairpublic-key-private-key-using-ssh-keygen).
 
 ## Deploy EC2 instance via Terraform
 
@@ -100,7 +100,7 @@ resource "aws_key_pair" "deployer" {
 ```
 **NOTE:-** Replace **public_key**, **access_key**, **secret_key**, and **key_name** with your values.
 
-Now, use the [Terraform commands](/learning-paths/server-and-cloud/aws/terraform#terraform-commands) to deploy **main.tf** file. After successful deployment of EC2 instance we need to configure MariaDB on the same via Ansible
+Now, use the [Terraform commands](/learning-paths/server-and-cloud/aws/terraform#terraform-commands) to deploy **main.tf** file. After successful deployment of the EC2 instance, we need to configure MariaDB on the same via Ansible.
 
 
 ## Configure MariaDB through Ansible
@@ -196,7 +196,7 @@ Here is the output after the successful execution of the `ansible-playbook` comm
 ![Screenshot (409)](https://user-images.githubusercontent.com/92315883/220863364-bd944936-a7dc-4dde-89dc-c478ffe7a385.png)
 
 
-## Connect to Database using EC2 instance
+## Connect to Database
 
 To connect to the database, we need the **public-ip** of the instance where MariaDB is deployed, which can be found in **inventory.txt** file. We also need to use the MariaDB Client to interact with the MariaDB database.
 

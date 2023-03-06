@@ -11,7 +11,7 @@ layout: "learningpathall"
 
 Any computer which has the required tools installed can be used for this section. 
 
-You will need an [AWS account](https://portal.aws.amazon.com/billing/signup?nc2=h_ct&src=default&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start). 
+You will need an [AWS account](https://portal.aws.amazon.com/billing/signup?nc2=h_ct&src=default&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start). Create an account if needed.
 
 Three tools are required on the computer you are using. Follow the links to install the required tools.
 * [Terraform](/install-tools/terraform)
@@ -92,7 +92,7 @@ To run Graviton (Arm) based DB instance, we need to select Amazon **M6g** and **
 Now, use the [Terraform commands](/learning-paths/server-and-cloud/aws/terraform#terraform-commands) to deploy **main.tf** file.
 
 
-## Verify RDS using EC2 instance
+## Verify RDS
 
 
 To verify the setup on AWS console, go to **RDS » Databases**, you should see the instance running.  
@@ -100,7 +100,7 @@ To verify the setup on AWS console, go to **RDS » Databases**, you should see t
 ![Screenshot (374)](https://user-images.githubusercontent.com/92315883/218340185-097c876e-2c3c-4630-adef-ac9b905c08ec.png)
 
 
-## Connect to RDS using EC2 instance
+## Connect to RDS 
 
 To access the RDS instance, make sure that our instance is correctly associated with a security group and VPC. To access RDS outside the VPC, follow this [document](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.Connect.html).
 

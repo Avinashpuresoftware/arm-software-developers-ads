@@ -68,7 +68,6 @@ We also need to map the container port to the host port, which is `3306`. Below 
           MARIADB_ROOT_PASSWORD: {{your_mariadb_password}}
           MARIADB_USER: local_us
           MARIADB_PASSWORD: Armtest123
-          MARIADB_DATABASE: arm_test
 
 ```
 **NOTE:**- Replace **docker_container.env** variables of **Deploy mariadb docker container** task with your own MariaDB user and password. Also, replace **{{dockerhub_uname}}** and **{{dockerhub_pass}}** with your dockerhub credentials.
@@ -120,6 +119,7 @@ create database {{your_database_name}};
 ```console
 use {{your_database_name}};
 ```
-![Screenshot (438)](https://user-images.githubusercontent.com/92315883/223045994-6ed9c774-7ba1-459d-b0d1-72bd8bf4cc25.png)
+
+![Screenshot (446)](https://user-images.githubusercontent.com/92315883/223372080-22df1da5-42c4-437b-aaa4-319192e209ed.png)
 
 To create and access a table, follow this [document](/learning-paths/server-and-cloud/mariadb/ec2_deployment#access-database-and-create-table).

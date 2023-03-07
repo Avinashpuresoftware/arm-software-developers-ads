@@ -21,7 +21,7 @@ Three tools are required on the computer you are using. Follow the links to inst
 ## Deploy MariaDB RDS instances
 
 RDS is a Relational database service provided by AWS. More information can be found [here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MariaDB.html). 
-To generate an access key and secret key, follow the instructions mentioned in this [document](/learning-paths/server-and-cloud/mariadb/ec2_deployment#generate-access-keys-access-key-id-and-secret-access-key). Create an account if needed.
+To generate an access key and secret key, follow the instructions mentioned in this [document](/learning-paths/server-and-cloud/aws/terraform#generate-access-keys-access-key-id-and-secret-access-key). Create an account if needed.
 To deploy an RDS instance of MariaDB, we have to create a Terraform file called **main.tf**. Below is the complete **main.tf**.
 
 ```console

@@ -138,14 +138,6 @@ To deploy MariaDB instance, we have to create a **.yml** file, which is also kno
          password: {{Give_any_password}}
          priv: '*.*:ALL,GRANT'
          state: present
-    - name: Create a new database with name 'arm_test'
-      community.mysql.mysql_db:
-        name: arm_test
-        login_user: root
-        login_password: {{Your_mariadb_password}}
-        login_host: localhost
-        state: present
-        login_unix_socket: /run/mysqld/mysqld.sock
     - name: MariaDB secure installation
       become: yes
       expect:
@@ -193,7 +185,7 @@ ansible-playbook {your_yml_file} -i {your_inventory_file} --key-file {path_to_pr
 
 Here is the output after the successful execution of the `ansible-playbook` command.
 
-![Screenshot (409)](https://user-images.githubusercontent.com/92315883/220863364-bd944936-a7dc-4dde-89dc-c478ffe7a385.png)
+![Screenshot (453)](https://user-images.githubusercontent.com/92315883/223962378-8ddd5b62-0f24-4009-b6d7-b33c17f09e53.png)
 
 
 ## Connect to Database
@@ -213,17 +205,20 @@ mariadb -h {public_ip of instance where MariaDB deployed} -P3306 -u {user_name o
 ![Screenshot (410)](https://user-images.githubusercontent.com/92315883/220863315-06803b90-877d-4a26-a038-2667301fbfce.png)
 
 
-### Access Database and Create Table
+### Create Database and Table
 
-We can access our database by using the below commands.
+To create a database, use the below commands:
 
 ```console
 show databases;
 ```
 ```console
-use {your_database};
+create database {{your_database_name}};
 ```
-![Screenshot (390)](https://user-images.githubusercontent.com/92315883/218905040-05fbbb32-fda0-4022-8323-68b8278cd818.png)
+```console
+use {{your_database_name}};
+```
+![Screenshot (452)](https://user-images.githubusercontent.com/92315883/223959034-a875b81d-1f3a-4bfd-9421-8d0318bd1169.png)
 
 Use the below commands to create a table and insert values into it.
 
